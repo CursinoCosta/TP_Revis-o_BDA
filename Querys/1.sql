@@ -3,8 +3,8 @@ FROM Cliente Cl
 LEFT JOIN (
     SELECT *
     FROM Carga C
-    LEFT JOIN Produto P
+    LEFT JOIN Pedido P
     ON C.ID_Pedido = P.ID
-    WHERE P.Status = “a caminho”
+    WHERE P.Status = 'A caminho'
 ) Pe 
 ON Cl.ID = Pe.ID_Cliente

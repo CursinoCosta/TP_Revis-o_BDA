@@ -1,22 +1,14 @@
-SELECT
-    CA.id_carga
-FROM
-    Carga AS CA
-WHERE
-    CA.id_pedido IN (
-        SELECT
-            P.id
-        FROM
-            PEDIDO AS P
-        WHERE
-            P.id_cli IN (
-                SELECT
-                    id_cli
-                FROM
-                    PEDIDO
-                GROUP BY
-                    id_cli
-                HAVING
-                    COUNT(id) = 1
+SELECT CA.ID
+FROM Carga AS CA
+WHERE CA.ID_Pedido IN 
+        (
+        SELECT P.ID
+        FROM Pedido AS P
+        WHERE P.ID_Cliente IN 
+            (
+            SELECT ID_Cliente
+            FROM PEDIDO
+            GROUP BY ID_Cliente
+            HAVING COUNT(ID) = 1
             )
     );

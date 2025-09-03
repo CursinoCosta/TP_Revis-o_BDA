@@ -3,10 +3,10 @@ WITH A AS (
     FROM Cliente C
     JOIN Pedido P ON C.ID = P.ID_Cliente
     JOIN Carga Ca ON Ca.ID_Pedido = P.ID
-    JOIN Carga_Produto CP ON CP.ID_Carga = Ca.ID_Carga
+    JOIN Carga_Produto CP ON CP.ID_Carga = Ca.ID
 )
 
-SELECT Nome
+SELECT Nome, COUNT(DISTINCT ID_Produto)
 FROM A
 GROUP BY Nome
 HAVING COUNT(DISTINCT ID_Produto) = (
